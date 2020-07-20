@@ -1,0 +1,50 @@
+// 테이블 생성
+create table TESTTable (
+    TEST_NUM varchar(16) not null,
+    CUSTOMER varchar(16) not null,
+    PRIMARY KEY (TEST_NUM)
+);
+
+//데이터 삽입
+ INSERT INTO TESTTable(TEST_NUM, CUSTOMER) VALUES (1, MINJAE);
+
+//데이터 조회
+SELECT * FROM TESTTable;
+
+//데이터 수정
+UPDATE TESTTable SET column1 = value1, colu,m2 = value2 [WHERE 절];
+
+//데이터 삭제
+DELETE FROM TESTTable select TEST_NUM = '1';
+
+//사원 테이블
+CREATE TABLE employees
+   ( UID INT NOT NULL,  
+   PRIMARY KEY(UID) 
+);
+
+//급여 테이블
+CREATE TABLE salaries
+   ( emp_no INT NOT NULL, 
+   salary INT NOT NULL, 
+   from_date DATE NOT NULL, 
+   to_date DATE, 
+   FOREIGN KEY(emp_no) REFERENCES employees (UID) ON DELETE CASCADE, 
+   PRIMARY KEY(emp_no, from_date) 
+);
+
+
+//사용자 계정 추가
+CREATE USER SUPER@localhost IDENTIFIED BY 'password';
+
+//계정 정보 확인
+SHOW GRANTS FOR SUPER@localhost;
+
+//사용자 계정 제거
+DROP user super@localhost;
+
+//권하 부여
+GRANT SELECT, UPDATE ON biz.* TO super;
+
+//권한 회수
+REVOKE all ON *.* FROM super@localhost;
